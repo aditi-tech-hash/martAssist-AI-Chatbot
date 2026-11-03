@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat History | SmartAssist AI</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            color: #1e293b;
+            margin: 0;
+            padding: 25px;
+        }
+
+        main {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .chat {
+            background: white;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 12px;
+            overflow-wrap: anywhere;
+            box-shadow: 0 4px 15px #0000000a;
+        }
+
+        .date {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        a {
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .user { color: #4338ca; }
+        .bot { color: #0f766e; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Chat History 📚</h1>
+        <p>Previous conversations saved by SmartAssist AI.</p>
+        <p><a href="/">← Back to Chatbot</a></p>
+
+        {% if chats %}
+            {% for chat in chats %}
+                <section class="chat">
+                    <p class="date">{{ chat["created_at"] }}</p>
+                    <p class="user"><strong>You:</strong> {{ chat["user_message"] }}</p>
+                    <p class="bot"><strong>SmartAssist:</strong> {{ chat["bot_response"] }}</p>
+                </section>
+            {% endfor %}
+        {% else %}
+            <p>No chat history available yet. Send a message to the chatbot first.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
